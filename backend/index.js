@@ -1,37 +1,22 @@
 const express = require('express')
-const cors = require('cors')
+const cors = require("cors")
+require('dotenv').config()
+const Note = require("./models/note")
 const app = express()
 
 app.use(express.json())
 app.use(cors())
-let notes = [
-    {
-      id: 1,
-      content: "HTML is easy",
-      important: true
-    },
-    {
-      id: 2,
-      content: "Browser can execute only JavaScript",
-      important: false
-    },
-    {
-      id: 3,
-      content: "GET and POST are the most important methods of HTTP protocol",
-      important: true
-    }
-  ];
+app.use(express.static('build'))
 
 
 app.get('/', (req, res) => {
     res.send('<h1>Hello World</h1>')
 })
 
-/* ---------
-  routes for notes api
-  ------------ */
 app.get('/api/notes', (req, res) => {
-    res.json(notes)
+    Note.find({}).then(notes => {
+      res.json(notes)
+    })
 })
 
 const generateId = () => {
@@ -79,79 +64,7 @@ app.get('/api/notes/:id', (req, res) => {
     res.status(204).end()
   })
 
-  /* ---------
-  routes for persons api
-  ------------ */
-  app.get('/api/persons', (req, res) => {
-    res.json([
-      { 
-        "id": "1",
-        "name": "Arto Hellas", 
-        "number": "040-123456"
-      },
-      { 
-        "id": "2",
-        "name": "Ada Lovelace", 
-        "number": "39-44-5323523"
-      },
-      { 
-        "id": "3",
-        "name": "Dan Abramov", 
-        "number": "12-43-234345"
-      },
-      { 
-        "id": "4",
-        "name": "Mary Poppendieck", 
-        "number": "39-23-6423122"
-      }
-  ])
-  })
-
-    /* ---------
-  routes for phonebook
-  ------------ */
-
-  let contacts = [
-    {
-      "id": 1,
-      "name": "Elma Herring",
-      "email": "elmaherring@unq.com",
-      "phone": "+1 (913) 497-2020"
-    },
-    {
-      "id": 2,
-      "name": "Knapp Berry",
-      "email": "knappberry@unq.com",
-      "phone": "+1 (951) 472-2967"
-    },
-    {
-      "id": 3,
-      "name": "Bell Burgess",
-      "email": "bellburgess@unq.com",
-      "phone": "+1 (887) 478-2693"
-    },
-    {
-      "id": "73ae",
-      "name": "Sam White",
-      "phone": "+1 (913) 493-2020"
-    }
-  ]
   
-  app.get('/info', (req, res) => {
-    res.send('<p>Phonebook has info for two people</p><br><p></p>')
-  })
-
-  app.get('/api/persons/:id', (req, res) => {
-    const id = req.params.id
-    const phone = contacts.filter(contact => contact.id === id)
-    
-    if (phone){
-      res.json(phone)
-  } else {
-      res.status(404).end()
-  }
-
-  })
 
   /* --------------
   middleware
@@ -173,7 +86,7 @@ app.get('/api/notes/:id', (req, res) => {
 
   app.use(unknownEndpoint)
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
