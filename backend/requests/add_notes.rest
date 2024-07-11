@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+    "content" : "Playstation 5 release on July 30",
+    "important": true
+}
+
+###
+GET http://localhost:3001/api/notes

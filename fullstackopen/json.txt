@@ -1,0 +1,62 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Elma Herring",
+      "email": "elmaherring@unq.com",
+      "phone": "+1 (913) 497-2020"
+    },
+    {
+      "id": 2,
+      "name": "Knapp Berry",
+      "email": "knappberry@unq.com",
+      "phone": "+1 (951) 472-2967"
+    },
+    {
+      "id": 3,
+      "name": "Bell Burgess",
+      "email": "bellburgess@unq.com",
+      "phone": "+1 (887) 478-2693"
+    }
+  ]
+}
+
+
+
+
+
+
+ {
+  "notes": [
+    {
+      "id": "1",
+      "content": "HTML is easy",
+      "important": true
+    },
+    {
+      "id": "2",
+      "content": "Browser can execute only JavaScript",
+      "important": false
+    },
+    {
+      "id": "3",
+      "content": "GET and POST are the most important methods of HTTP protocol",
+      "important": true
+    },
+    {
+      "id": "b36b",
+      "content": "Carrara's Campbell Biology Mem Pages",
+      "important": true
+    },
+    {
+      "id": "d0b0",
+      "content": "Carrara's Campbell Biology Mem Pages",
+      "important": false
+    },
+    {
+      "id": "7bcf",
+      "content": "Connect with like-minded people",
+      "important": true
+    }
+  ]
+}
