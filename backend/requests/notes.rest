@@ -2,9 +2,15 @@ POST http://localhost:3001/api/notes
 Content-Type: application/json
 
 {
-    "content" : "Playstation 5 release on July 30",
-    "important": true
+    "content" : "Afcon final Prediction",
+    "important": false
 }
 
 ###
 GET http://localhost:3001/api/notes
+
+###
+GET http://localhost:3001/api/notes/66907128b232f7e5e1ef35d6
+
+###
+DELETE http://localhost:3001/api/notes/66907128b232f7e5e1ef35d6
